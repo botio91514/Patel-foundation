@@ -4,33 +4,9 @@ import Navbar from '@/components/Navbar';
 import GrandFinale from '@/components/GrandFinale';
 import SEO from '@/components/SEO';
 import { Play, ChevronDown } from 'lucide-react';
-import { MEDIA } from '@/data/media';
+import { CATEGORIES, GALLERY_ITEMS, REELS } from '@/data/gallery';
 
-// --- DATA ---
-const CATEGORIES = ["All", "Education", "Healthcare", "Community", "Kavitha", "Sustainability"];
-
-const GALLERY_ITEMS = [
-    { type: 'image', src: MEDIA.hero.nutrition, category: 'Healthcare', size: 'wide', title: "Daily Nutrition" },
-    { type: 'image', src: 'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?q=80&w=2070', category: 'Community', size: 'dead', title: "Charity & Joy" },
-    { type: 'image', src: 'https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?q=80&w=2070', category: 'Kavitha', size: 'medium', title: "Village Matriarch" },
-    { type: 'image', src: MEDIA.hero.relief, category: 'Healthcare', size: 'large', title: "Medical Relief" },
-    { type: 'image', src: 'https://images.unsplash.com/photo-1551854269-93450552b7b3?q=80&w=2070', category: 'Education', size: 'wide', title: "Mentorship" },
-    { type: 'video', src: 'https://assets.mixkit.co/videos/preview/mixkit-children-playing-in-a-park-4273-large.mp4', category: 'Community', size: 'medium', title: "Unbound Freedom" },
-    { type: 'image', src: 'https://images.unsplash.com/photo-1621974718042-3e218206d2c6?q=80&w=2070', category: 'Kavitha', size: 'medium', title: "Harvest Sharing" },
-    { type: 'image', src: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=2070', category: 'Sustainability', size: 'medium', title: "New Roots" },
-    { type: 'video', src: 'https://assets.mixkit.co/videos/preview/mixkit-village-river-aerial-view-4567-large.mp4', category: 'Kavitha', size: 'dead', title: "Lifeline River" },
-    { type: 'image', src: 'https://images.unsplash.com/photo-1606294711589-32d88001712a?q=80&w=2070', category: 'Community', size: 'wide', title: "Feast for All" },
-    { type: 'image', src: MEDIA.projects.health, category: 'Healthcare', size: 'medium', title: "Daily Rounds" },
-    { type: 'image', src: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070', category: 'Education', size: 'medium', title: "Digital Access" },
-    { type: 'image', src: MEDIA.hero.global, category: 'Community', size: 'medium', title: "Global Family" },
-];
-
-const REELS = [
-    { title: "Dawn Prayer", duration: "0:45", views: "1.2k" },
-    { title: "Seva in Action", duration: "1:20", views: "3.4k" },
-    { title: "Culture Alive", duration: "0:30", views: "5.6k" },
-    { title: "Mission Jal", duration: "2:10", views: "900" },
-];
+// Data moved to src/data/gallery.ts for easier editing
 
 // --- COMPONENTS ---
 
@@ -207,7 +183,7 @@ const Gallery = () => {
                         <div key={i} className="min-w-[280px] h-[500px] bg-slate-50 rounded-2xl relative overflow-hidden group cursor-pointer snap-center shadow-lg border border-slate-100 hover:shadow-xl transition-all">
                             {/* Placeholder Reel Video */}
                             <video
-                                src="https://assets.mixkit.co/videos/preview/mixkit-young-woman-recording-a-video-on-her-phone-4158-large.mp4"
+                                src={reel.src}
                                 className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                                 muted loop
                                 onMouseEnter={e => e.currentTarget.play()}

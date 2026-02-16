@@ -18,25 +18,7 @@ const LatestStories = () => {
         return () => clearInterval(timer);
     }, [isPlaying, recentStories.length]);
 
-    // 3D Tilt Logic
-    const ref = useRef<HTMLDivElement>(null);
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-    const mouseXSpring = useSpring(x);
-    const mouseYSpring = useSpring(y);
-    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7deg", "-7deg"]);
-    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7deg", "7deg"]);
 
-    const handleMouseMove = (e: React.MouseEvent) => {
-        if (!ref.current) return;
-        const rect = ref.current.getBoundingClientRect();
-        const width = rect.width;
-        const height = rect.height;
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
-        x.set(mouseX / width - 0.5);
-        y.set(mouseY / height - 0.5);
-    };
 
     return (
         <section className="py-12 md:py-32 bg-background overflow-hidden relative">
@@ -45,13 +27,9 @@ const LatestStories = () => {
             <div className="container px-6 lg:px-12 relative z-10">
                 <div className="grid lg:grid-cols-12 gap-16 items-center">
 
-                    {/* Left: Cinematic 3D Viewer */}
-                    <div className="lg:col-span-7 perspective-1000 hidden lg:block" style={{ perspective: "1200px" }}>
-                        <motion.div
-                            ref={ref}
-                            onMouseMove={handleMouseMove}
-                            onMouseLeave={() => { x.set(0); y.set(0); }}
-                            style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+                    {/* Left: Cinematic Viewer */}
+                    <div className="lg:col-span-7 hidden lg:block">
+                        <div
                             className="relative h-[700px] w-full rounded-[2rem] overflow-hidden shadow-2xl group"
                         >
                             <AnimatePresence mode="popLayout" initial={false}>
@@ -109,7 +87,7 @@ const LatestStories = () => {
                                     </motion.div>
                                 </motion.div>
                             </AnimatePresence>
-                        </motion.div>
+                        </div>
                     </div>
 
                     {/* Right: Elegant Interactive List */}
