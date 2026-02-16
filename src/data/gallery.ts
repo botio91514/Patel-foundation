@@ -5,14 +5,14 @@ export const CATEGORIES = ["All", "Education", "Healthcare", "Community", "Kavit
 export const GALLERY_ITEMS = [
     {
         type: 'image',
-        src: "src/assets/p11.jpg",
+        src: "/assets/p11.jpg",
         category: 'Healthcare',
         size: 'wide',
         title: "Daily Nutrition"
     },
     {
         type: 'image',
-        src: 'src/assets/pt5.jpg',
+        src: '/assets/pt5.jpg',
         category: 'Community',
         size: 'dead',
         title: "Charity & Joy"
@@ -26,63 +26,63 @@ export const GALLERY_ITEMS = [
     },
     {
         type: 'image',
-        src: "src/assets/pp12.jpeg",
+        src: "/assets/pp12.jpeg",
         category: 'Healthcare',
         size: 'large',
         title: "Medical Relief"
     },
     {
         type: 'image',
-        src: 'src/assets/pt2.jpeg',
+        src: '/assets/pt2.jpeg',
         category: 'Education',
         size: 'wide',
         title: "Mentorship"
     },
     {
         type: 'image',
-        src: 'src/assets/pt3.jpeg',
+        src: '/assets/pt3.jpeg',
         category: 'Community',
         size: 'medium',
         title: "Unbound Freedom"
     },
     {
         type: 'image',
-        src: 'src/assets/pt7.jpg',
+        src: '/assets/pt7.jpg',
         category: 'Kavitha',
         size: 'medium',
         // title: "Harvest Sharing"
     },
     {
         type: 'image',
-        src: 'src/assets/pt9.jpg',
+        src: '/assets/pt9.jpg',
         category: 'Sustainability',
         size: 'medium',
         title: "New Roots"
     },
     {
         type: 'image',
-        src: 'src/assets/p14.jpeg',
+        src: '/assets/p14.jpeg',
         category: 'Kavitha',
         size: 'dead',
         // title: "Lifeline River"
     },
     {
         type: 'image',
-        src: 'src/assets/pt6.jpg',
+        src: '/assets/pt6.jpg',
         category: 'Community',
         size: 'wide',
         title: "Feast for All"
     },
     {
         type: 'image',
-        src: "src/assets/p13.jpeg",
+        src: "/assets/p13.jpeg",
         category: 'Healthcare',
         size: 'medium',
         title: "Daily Rounds"
     },
     {
         type: 'image',
-        src: 'src/assets/pt10.jpg',
+        src: '/assets/pt10.jpg',
         category: 'Education',
         size: 'medium',
         title: "Digital Access"
@@ -96,14 +96,14 @@ export const GALLERY_ITEMS = [
     },
     {
         type: 'image',
-        src: 'src/assets/p16.jpeg',
+        src: '/assets/p16.jpeg',
         category: 'Education',
         size: 'wide',
         title: "Salad Deco Competition"
     },
     {
         type: 'image',
-        src: 'src/assets/p18.png',
+        src: '/assets/p18.png',
         category: 'Education',
         size: 'dead',
         title: "Diwali Celebration"
@@ -117,7 +117,7 @@ export const GALLERY_ITEMS = [
     },
     {
         type: 'image',
-        src: 'src/assets/p17.jpg',
+        src: '/assets/p17.jpg',
         category: 'Healthcare',
         size: 'wide',
         title: ""
@@ -139,8 +139,8 @@ export const GALLERY_ITEMS = [
 ];
 
 export const REELS = [
-    { title: "Dawn Prayer", src: "src/assets/reel1.mp4" },
-    { title: "Seva in Action", src: "src/assets/reel2.mp4" },
-    { title: "Culture Alive", src: "src/assets/reel3.mp4" },
-    { title: "Mission Jal", src: "src/assets/reel4.mp4" },
+    { title: "Dawn Prayer", src: "/assets/reel1.mp4" },
+    { title: "Seva in Action", src: "/assets/reel2.mp4" },
+    { title: "Culture Alive", src: "/assets/reel3.mp4" },
+    { title: "Mission Jal", src: "/assets/reel4.mp4" },
 ];
