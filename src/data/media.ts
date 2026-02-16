@@ -12,9 +12,9 @@ export const MEDIA = {
     hero: {
         kavitha: "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=2070", // Main village/community shot
         education: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070", // Classroom/Students
-        nutrition: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2076", // Food/Eating
-        relief: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2070", // Medical/Relief
-        global: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=2070", // Global reach/Map
+        nutrition: "https://images.unsplash.com/photo-1767452455107-16c8ff585b2b?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Food/Eating
+        relief: "https://images.unsplash.com/photo-1727475806928-b9aaba668f53?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Medical/Relief
+        global: "https://plus.unsplash.com/premium_photo-1723485720397-f565e09c1bf7?q=80&w=1147&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Global reach/Map
         future: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=2070", // Hopeful child
     },
     stories: {

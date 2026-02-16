@@ -6,10 +6,10 @@ import { MEDIA } from '@/data/media';
 
 const navLinks = [
   { name: 'Home', href: '/' },
-  { name: 'Our Story', href: '/about' },
+  { name: 'About Us', href: '/about' },
   { name: 'Impact', href: '/programs' },
   { name: 'Gallery', href: '/gallery' },
-  { name: 'Journal', href: '/stories' },
+  { name: 'Stories', href: '/stories' },
   { name: 'Get Involved', href: '/get-involved' },
 ];
 

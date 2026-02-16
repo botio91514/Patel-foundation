@@ -3,8 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import GrandFinale from '@/components/GrandFinale';
 import SEO from '@/components/SEO';
-import { Check, Lock, Heart, Globe, Zap, Leaf, Gift, MoveRight, ArrowUpRight } from 'lucide-react';
+import { Check, Lock, Heart, Globe, Zap, Leaf, Gift, MoveRight, ArrowUpRight, Loader2 } from 'lucide-react';
 import { MEDIA } from '@/data/media';
+import { toast } from 'sonner';
 
 const impactGallery = [
     {
@@ -98,6 +99,25 @@ const Donate = () => {
 
     const currentAmount = selectedAmount === 'custom' ? (Number(customAmount) || 0) : selectedAmount;
     const activeTier = donationTiers.slice().reverse().find(t => currentAmount >= t.value) || donationTiers[0];
+
+    const [isProcessing, setIsProcessing] = useState(false);
+
+    const handleDonate = () => {
+        if (currentAmount <= 0) {
+            toast.error("Please enter a valid amount.");
+            return;
+        }
+        setIsProcessing(true);
+        setTimeout(() => {
+            setIsProcessing(false);
+            toast.success("Donation Successful!", {
+                description: `Thank you for your generous gift of $${currentAmount}.`,
+                duration: 5000,
+            });
+            setCustomAmount('');
+            setSelectedAmount(100);
+        }, 2000);
+    };
 
     return (
         <main className="bg-[#FDFBF7] text-foreground font-sans selection:bg-primary/20">
@@ -336,11 +356,23 @@ const Donate = () => {
                             </div>
                         </div>
 
-                        {/* Submit Button */}
-                        <button className="w-full py-5 bg-black text-white rounded-2xl text-lg font-bold tracking-wide hover:shadow-2xl hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-3">
-                            <Lock size={18} />
-                            Complete Donation
-                            {currentAmount > 0 && <span className="opacity-70">(${currentAmount})</span>}
+                        <button
+                            onClick={handleDonate}
+                            disabled={isProcessing || currentAmount <= 0}
+                            className="w-full py-5 bg-black text-white rounded-2xl text-lg font-bold tracking-wide hover:shadow-2xl hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+                        >
+                            {isProcessing ? (
+                                <>
+                                    <Loader2 className="animate-spin" />
+                                    Processing Payment...
+                                </>
+                            ) : (
+                                <>
+                                    <Lock size={18} />
+                                    Complete Donation
+                                    {currentAmount > 0 && <span className="opacity-70">(${currentAmount})</span>}
+                                </>
+                            )}
                         </button>
                     </div>
                 </div>

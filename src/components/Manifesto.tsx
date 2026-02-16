@@ -6,27 +6,33 @@ import { MEDIA } from '@/data/media';
 const values = [
     {
         id: 1,
-        title: "Radical Transparency",
-        description: "We track every cent. You see every impact.",
-        image: MEDIA.hero.future
+        title: "Roots Deep as Earth",
+        description: "Born from the red soil of Kavitha. We carry the village spirit in our very soul.",
+        image: MEDIA.projects.trees
     },
     {
         id: 2,
-        title: "Community First",
-        description: "Solutions born from the people we serve.",
-        image: MEDIA.hero.kavitha
+        title: "Unstoppable Force",
+        description: "We don't just give aid. We ignite potential, creating a wildfire of progress.",
+        image: MEDIA.events.reliefWork
     },
     {
         id: 3,
-        title: "Sustainable Future",
-        description: "Building systems that last for generations.",
-        image: MEDIA.projects.sustainability
+        title: "The Human Thread",
+        description: "Connecting a donor in New York to a child in Gujarat. One heart, one pulse.",
+        image: MEDIA.hero.global
     },
     {
         id: 4,
-        title: "Global Empathy",
-        description: "Borders don't limit our compassion.",
-        image: MEDIA.hero.global
+        title: "Audacious Hope",
+        description: "Dreaming big isn't enough. We build the schools, the clinics, the future.",
+        image: MEDIA.hero.future
+    },
+    {
+        id: 5,
+        title: "Legacy of Light",
+        description: "Every act of kindness casts a shadow that stretches into eternity.",
+        image: MEDIA.projects.vidya
     }
 ];
 
@@ -94,8 +100,8 @@ const Manifesto = () => {
                 <div className="mb-24 md:mb-32">
                     <h4 className="text-primary text-xs font-bold uppercase tracking-[0.3em] mb-6">Our DNA</h4>
                     <h2 className="text-white text-5xl md:text-7xl lg:text-8xl font-light leading-[0.9] max-w-6xl tracking-tighter">
-                        We don't just dream of a better world. <br />
-                        <span className="text-white/30 italic font-serif ml-4 md:ml-12">We engineer it.</span>
+                        Not Just a Foundation. <br />
+                        <span className="text-white/30 italic font-serif ml-4 md:ml-12">A Living Movement.</span>
                     </h2>
                 </div>
 

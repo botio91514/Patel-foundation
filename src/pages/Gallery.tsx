@@ -7,32 +7,29 @@ import { Play, ChevronDown } from 'lucide-react';
 import { MEDIA } from '@/data/media';
 
 // --- DATA ---
-const CATEGORIES = ["All", "Education", "Healthcare", "Community", "Kavitha"];
+const CATEGORIES = ["All", "Education", "Healthcare", "Community", "Kavitha", "Sustainability"];
 
 const GALLERY_ITEMS = [
-    { type: 'video', src: 'https://assets.mixkit.co/videos/preview/mixkit-children-playing-in-a-park-4273-large.mp4', category: 'Community', size: 'large', title: "Joy of Play" },
-    { type: 'image', src: MEDIA.hero.kavitha, category: 'Kavitha', size: 'medium', title: "Village Mornings" },
-    { type: 'image', src: MEDIA.projects.vidya, category: 'Education', size: 'dead', title: "Future Leaders" },
-    { type: 'video', src: 'https://assets.mixkit.co/videos/preview/mixkit-students-walking-in-a-university-4519-large.mp4', category: 'Education', size: 'medium', title: "School Walk" },
-    { type: 'image', src: MEDIA.projects.health, category: 'Healthcare', size: 'wide', title: "Medical Camp 2024" },
-    { type: 'image', src: MEDIA.events.picnic, category: 'Community', size: 'medium', title: "Annual Picnic" },
-    { type: 'video', src: 'https://assets.mixkit.co/videos/preview/mixkit-village-river-aerial-view-4567-large.mp4', category: 'Kavitha', size: 'large', title: "River Life" },
-    { type: 'image', src: MEDIA.blog.maya, category: 'Education', size: 'medium', title: "Maya's Story" },
-    // --- New Items ---
-    { type: 'image', src: MEDIA.events.meeting, category: 'Community', size: 'wide', title: "Town Hall" },
-    { type: 'video', src: 'https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-plant-growing-in-the-earth-1339-large.mp4', category: 'Sustainability', size: 'medium', title: "Planting Hope" },
-    { type: 'image', src: MEDIA.hero.nutrition, category: 'Healthcare', size: 'medium', title: "Daily Nutrition" },
-    { type: 'image', src: MEDIA.blog.artisans, category: 'Community', size: 'dead', title: "Local Artisans" },
-    { type: 'image', src: MEDIA.hero.global, category: 'Kavitha', size: 'large', title: "Diwali Celebration" },
-    { type: 'video', src: 'https://assets.mixkit.co/videos/preview/mixkit-girl-in-neon-sign-1232-large.mp4', category: 'Education', size: 'wide', title: "Digital Skills Lab" }, // Placeholder for tech
-    { type: 'image', src: MEDIA.hero.relief, category: 'Healthcare', size: 'medium', title: "Monsoon Relief" },
+    { type: 'image', src: MEDIA.hero.nutrition, category: 'Healthcare', size: 'wide', title: "Daily Nutrition" },
+    { type: 'image', src: 'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?q=80&w=2070', category: 'Community', size: 'dead', title: "Charity & Joy" },
+    { type: 'image', src: 'https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?q=80&w=2070', category: 'Kavitha', size: 'medium', title: "Village Matriarch" },
+    { type: 'image', src: MEDIA.hero.relief, category: 'Healthcare', size: 'large', title: "Medical Relief" },
+    { type: 'image', src: 'https://images.unsplash.com/photo-1551854269-93450552b7b3?q=80&w=2070', category: 'Education', size: 'wide', title: "Mentorship" },
+    { type: 'video', src: 'https://assets.mixkit.co/videos/preview/mixkit-children-playing-in-a-park-4273-large.mp4', category: 'Community', size: 'medium', title: "Unbound Freedom" },
+    { type: 'image', src: 'https://images.unsplash.com/photo-1621974718042-3e218206d2c6?q=80&w=2070', category: 'Kavitha', size: 'medium', title: "Harvest Sharing" },
+    { type: 'image', src: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=2070', category: 'Sustainability', size: 'medium', title: "New Roots" },
+    { type: 'video', src: 'https://assets.mixkit.co/videos/preview/mixkit-village-river-aerial-view-4567-large.mp4', category: 'Kavitha', size: 'dead', title: "Lifeline River" },
+    { type: 'image', src: 'https://images.unsplash.com/photo-1606294711589-32d88001712a?q=80&w=2070', category: 'Community', size: 'wide', title: "Feast for All" },
+    { type: 'image', src: MEDIA.projects.health, category: 'Healthcare', size: 'medium', title: "Daily Rounds" },
+    { type: 'image', src: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070', category: 'Education', size: 'medium', title: "Digital Access" },
+    { type: 'image', src: MEDIA.hero.global, category: 'Community', size: 'medium', title: "Global Family" },
 ];
 
 const REELS = [
-    { title: "Morning Prayer", duration: "0:45", views: "1.2k" },
-    { title: "Food Distribution", duration: "1:20", views: "3.4k" },
-    { title: "Dance Class", duration: "0:30", views: "5.6k" },
-    { title: "Water Project", duration: "2:10", views: "900" },
+    { title: "Dawn Prayer", duration: "0:45", views: "1.2k" },
+    { title: "Seva in Action", duration: "1:20", views: "3.4k" },
+    { title: "Culture Alive", duration: "0:30", views: "5.6k" },
+    { title: "Mission Jal", duration: "2:10", views: "900" },
 ];
 
 // --- COMPONENTS ---
@@ -55,10 +52,10 @@ const VideoCard = ({ item }: { item: any }) => {
         <motion.div
             onMouseEnter={handleHover}
             onMouseLeave={handleLeave}
-            className={`relative group overflow-hidden rounded-3xl bg-black cursor-pointer shadow-xl ${item.size === 'large' ? 'col-span-2 row-span-2' :
-                item.size === 'wide' ? 'col-span-2 row-span-1' :
-                    item.size === 'dead' ? 'col-span-1 row-span-2' :
-                        'col-span-1 row-span-1'
+            className={`relative group overflow-hidden rounded-3xl bg-black cursor-pointer shadow-xl ${item.size === 'large' ? 'md:col-span-2 md:row-span-2' :
+                item.size === 'wide' ? 'md:col-span-2 md:row-span-1' :
+                    item.size === 'dead' ? 'md:col-span-1 md:row-span-2' :
+                        'md:col-span-1 md:row-span-1'
                 }`}
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -92,10 +89,10 @@ const VideoCard = ({ item }: { item: any }) => {
 
 const ImageCard = ({ item }: { item: any }) => (
     <motion.div
-        className={`relative group overflow-hidden rounded-3xl bg-slate-100 cursor-zoom-in shadow-lg hover:shadow-xl transition-shadow border border-slate-100 ${item.size === 'large' ? 'col-span-2 row-span-2' :
-            item.size === 'wide' ? 'col-span-2 row-span-1' :
-                item.size === 'dead' ? 'col-span-1 row-span-2' :
-                    'col-span-1 row-span-1'
+        className={`relative group overflow-hidden rounded-3xl bg-slate-100 cursor-zoom-in shadow-lg hover:shadow-xl transition-shadow border border-slate-100 ${item.size === 'large' ? 'md:col-span-2 md:row-span-2' :
+            item.size === 'wide' ? 'md:col-span-2 md:row-span-1' :
+                item.size === 'dead' ? 'md:col-span-1 md:row-span-2' :
+                    'md:col-span-1 md:row-span-1'
             }`}
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
@@ -179,7 +176,7 @@ const Gallery = () => {
                 </div>
 
                 {/* Grid */}
-                <motion.div layout className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 auto-rows-[300px] gap-6">
+                <motion.div layout className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 auto-rows-[300px] gap-6 grid-flow-dense">
                     <AnimatePresence>
                         {filteredItems.map((item, idx) => (
                             item.type === 'video' ? <VideoCard key={idx} item={item} /> : <ImageCard key={idx} item={item} />
