@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Sparkles, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import MagneticButton from './MagneticButton';
+import TextType from './TextType';
 
 import { MEDIA } from '@/data/media';
 
@@ -31,10 +32,10 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-black/5 shadow-sm text-sm font-medium text-slate-500 mb-8"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-black/5 shadow-sm text-sm font-medium text-slate-500 mb-8 relative overflow-hidden group"
         >
-          <Sparkles size={14} className="text-yellow-500 fill-yellow-500" />
-          <span className="tracking-wide uppercase text-xs font-bold">Born in Kavitha • Impacting the World</span>
+          <Sparkles size={14} className="text-yellow-500 fill-yellow-500 group-hover:animate-pulse" />
+          <span className="tracking-wide uppercase text-xs font-bold animate-shimmer [animation-duration:8s] bg-[linear-gradient(110deg,#64748b,45%,#f59e0b,55%,#64748b)] bg-[length:200%_100%] bg-clip-text text-transparent">Born in Kavitha • Impacting the World</span>
         </motion.div>
 
         <motion.h1
@@ -51,9 +52,18 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-lg md:text-2xl text-slate-500 max-w-2xl mx-auto font-light leading-relaxed mb-12 px-6"
+          className="text-lg md:text-2xl text-slate-500 max-w-2xl mx-auto font-light leading-relaxed mb-12 px-6 min-h-[4rem] md:min-h-[3.5rem]"
         >
-          From the rural heart of Kavitha, Gujarat, to a global platform for change. We provide education, daily nutrition, and crisis relief to children.
+          <TextType
+            text="From the rural heart of Kavitha, Gujarat, to a global platform for change. We provide education, daily nutrition, and crisis relief to children."
+            typingSpeed={30}
+            showCursor={true}
+            cursorCharacter="|"
+            loop={false}
+            className="inline"
+            startOnVisible={true}
+            as="span"
+          />
         </motion.p>
 
         <motion.div
@@ -97,16 +107,34 @@ const Hero = () => {
                 ${hoveredIndex !== null && hoveredIndex !== index ? 'md:opacity-50 md:grayscale' : 'opacity-100 grayscale-0'}
               `}
             >
-              <img
-                src={img.src}
-                alt={img.title}
-                className="w-full h-full object-cover transform scale-100 md:scale-110 md:hover:scale-100 transition-transform duration-700"
-                loading={index < 2 ? "eager" : "lazy"}
-                width={600}
-                height={800}
-                // @ts-ignore
-                fetchpriority={index === 0 ? "high" : "auto"}
-              />
+              {/* Continuous subtle breathing & panning effect */}
+              <motion.div
+                className="absolute inset-0 w-[110%] h-[110%] -left-[5%] -top-[5%]"
+                animate={{
+                  x: ["0%", "-2%", "2%", "0%"],
+                  y: ["0%", "2%", "-2%", "0%"],
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{
+                  duration: 20 + index * 2,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              >
+                <motion.img
+                  whileInView={{ scale: [1.2, 1], filter: ["brightness(1.4)", "brightness(1)"] }}
+                  viewport={{ amount: 0.4 }}
+                  transition={{ duration: 1.2, ease: "easeOut" }}
+                  src={img.src}
+                  alt={img.title}
+                  className="w-full h-full object-cover transform md:scale-110 md:hover:scale-100 transition-transform duration-700"
+                  loading={index < 2 ? "eager" : "lazy"}
+                  width={600}
+                  height={800}
+                  // @ts-ignore
+                  fetchpriority={index === 0 ? "high" : "auto"}
+                />
+              </motion.div>
 
               {/* Shadow Overlay */}
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60" />

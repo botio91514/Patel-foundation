@@ -23,10 +23,10 @@ const programs = [
   },
   {
     id: 3,
-    title: 'Sustainability',
-    category: 'Infrastructure',
-    description: 'Solar grids and clean water networks.',
-    image: MEDIA.projects.sustainability,
+    title: 'Nutritious Food',
+    category: 'Food Security',
+    description: 'Providing healthy meals to combat hunger and empower communities.',
+    image: MEDIA.hero.nutrition,
     color: 'from-amber-900 to-amber-800'
   },
   {

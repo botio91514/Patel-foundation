@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import GrandFinale from '@/components/GrandFinale';
 import MagneticButton from '@/components/MagneticButton';
-import { ArrowRight, BookOpen, Heart, Leaf, Lightbulb, Globe, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, BookOpen, Heart, Leaf, Wheat, Users, Lightbulb, Globe, ArrowUpRight } from 'lucide-react';
 import SEO from '@/components/SEO';
 import { MEDIA } from '@/data/media';
 
@@ -35,26 +35,26 @@ const programs = [
     },
     {
         id: '03',
-        title: 'Sustainability',
-        subtitle: 'Greening Earth',
-        icon: Leaf,
-        image: MEDIA.projects.sustainability,
-        description: 'Creating economic independence through sustainable agriculture and vocational training. We empower communities to thrive in harmony with their local ecosystem.',
+        title: 'Nutritious Food',
+        subtitle: 'Food Security',
+        icon: Wheat,
+        image: MEDIA.hero.nutrition,
+        description: 'Providing access to healthy and nutritious food for vulnerable communities. We establish food banks and nutritional programs to combat hunger and promote well-being.',
         stats: [
-            { label: 'Farmers', value: '5,000' },
-            { label: 'Trees', value: '1M+' },
+            { label: 'Meals Served', value: '1M+' },
+            { label: 'Families Help', value: '25k+' },
         ]
     },
     {
         id: '04',
-        title: 'Innovation',
-        subtitle: 'Future Tech',
-        icon: Lightbulb,
-        image: MEDIA.stories.digitalClass,
-        description: 'Incubating social startups that use technology to solve age-old problems. We fund bold ideas in water purification, renewable energy, and low-cost housing.',
+        title: 'Empowerment',
+        subtitle: 'Skill Development',
+        icon: Users,
+        image: MEDIA.blog.artisans,
+        description: 'Fostering economic independence and female leadership through microfinance, vocational training, and artisan cooperatives. We help communities build sustainable livelihoods.',
         stats: [
-            { label: 'Startups', value: '25' },
-            { label: 'Patents', value: '7' },
+            { label: 'Women Trained', value: '10k+' },
+            { label: 'Enterprises', value: '500+' },
         ]
     },
     {

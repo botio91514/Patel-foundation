@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Instagram, Twitter, Linkedin, Facebook, Heart, Loader2 } from 'lucide-react';
+import { ArrowRight, Instagram, Youtube, Linkedin, Facebook, Heart, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import MagneticButton from './MagneticButton';
 import { SITE_CONFIG } from '@/data/config';
@@ -138,15 +138,15 @@ const GrandFinale = () => {
                 </div>
 
                 {/* 3. Bottom Bar */}
-                <div className="flex flex-col md:flex-row justify-between items-center gap-6 border-t border-white/10 pt-6">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-5 border-t border-white/10">
                     <p className="text-white/50 text-sm font-light">
                         © 2026 Patel Foundation. Built with purpose.
                     </p>
                     <div className="flex gap-3">
-                        <SocialLink icon={Instagram} href="#" label="Instagram" />
-                        <SocialLink icon={Twitter} href="#" label="Twitter" />
-                        <SocialLink icon={Linkedin} href="#" label="LinkedIn" />
-                        <SocialLink icon={Facebook} href="#" label="Facebook" />
+                        <SocialLink icon={Instagram} href="https://www.instagram.com/the_patelfoundation/" label="Instagram" />
+                        <SocialLink icon={Youtube} href="https://www.youtube.com/@PatelFoundationUSA" label="YouTube" />
+                        <SocialLink icon={Linkedin} href="https://www.linkedin.com/in/patel-foundation-usa-83537b3ab/" label="LinkedIn" />
+                        <SocialLink icon={Facebook} href="https://www.facebook.com/patelfoundation2019" label="Facebook" />
                     </div>
                 </div>
 

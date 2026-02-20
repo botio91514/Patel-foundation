@@ -16,15 +16,9 @@ const roles = [
         icon: Users
     },
     {
-        id: 'fellow',
-        title: 'Global Fellow',
-        description: 'Spend 3 months in Kavitha, Gujarat, teaching and mentoring local youth.',
-        icon: Globe
-    },
-    {
-        id: 'careers',
-        title: 'Careers',
-        description: 'Find full-time opportunities to work with the foundation in US or India.',
+        id: 'other',
+        title: 'Other',
+        description: 'Tell Us how we can help you.',
         icon: Heart
     }
 ];

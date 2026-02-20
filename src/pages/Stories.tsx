@@ -1,165 +1,283 @@
 import { useState, useRef, useEffect } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import SEO from '@/components/SEO';
 import GrandFinale from '@/components/GrandFinale';
-import { Calendar, User, ArrowRight, BookOpen, Quote, Filter, PlayCircle } from 'lucide-react';
+import { Calendar, ArrowRight, BookOpen, Quote, PlayCircle, ArrowUp, Clock } from 'lucide-react';
 import { stories } from '@/data/stories';
 import { MEDIA } from '@/data/media';
 
-// --- 1. HERO CAROUSEL DATA ---
+// --- HERO CAROUSEL DATA ---
 const HERO_STORIES = [
     {
-        id: 99,
-        category: "Cover Story",
-        title: "The Girl Who Built a Library.",
-        subtitle: "In a village where girls were forbidden to read, Ananya started a revolution with just one book.",
-        date: "Feb 10, 2026",
-        image: MEDIA.stories.libraryGirl
+        id: 1,
+        category: "Covid Relief",
+        title: "Essentials for Every Door.",
+        subtitle: "When lockdown struck, we didn't wait. Thousands of families received Care Kits of rice, flour, and oil — delivered right to their doorstep.",
+        date: "May 10, 2020",
+        image: MEDIA.hero.relief,
     },
     {
-        id: 5, // Oxygen Mission
-        category: "Crisis Response",
-        title: "The Oxygen Mission.",
-        subtitle: "When the second wave hit, we pivoted our entire logistics network to deliver life-saving oxygen.",
-        date: "April 12, 2021",
-        image: MEDIA.stories.oxygenMission
+        id: 4,
+        category: "Health & Vision",
+        title: "A New Lens on Life.",
+        subtitle: "Over 1,500 villagers screened, 800 pairs of glasses given, and 120 cataract surgeries funded. For many, it was the first time they saw clearly in years.",
+        date: "August 12, 2021",
+        image: MEDIA.projects.health,
     },
     {
-        id: 2, // Digital Classrooms
-        category: "Innovation",
-        title: "Classrooms Without Walls.",
-        subtitle: "How solar-powered tablets are bridging the digital divide for students in remote Kenya.",
-        date: "Feb 28, 2024",
-        image: MEDIA.stories.digitalClass
-    }
+        id: 8,
+        category: "Nutrition",
+        title: "No Child Goes Hungry.",
+        subtitle: "Daily nutritious meals through the week. And every Sunday — a special feast that brings the whole village together in joy and celebration.",
+        date: "July 10, 2023",
+        image: MEDIA.hero.nutrition,
+    },
 ];
 
-const CATEGORIES = ["All", "Education", "Pandemic Relief", "Healthcare", "Women", "Digital Access"];
+const CATEGORIES = ["All", "Covid Relief", "Health & Vision", "Education", "Community & Joy", "Youth Empowerment", "Nutrition"];
 
+// --- STORY CARD COMPONENT ---
+const StoryCard = ({ story, index }: { story: any; index: number }) => (
+    <motion.article
+        key={story.id}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ delay: index * 0.08, duration: 0.7, ease: 'easeOut' }}
+        className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-500 border border-slate-100"
+    >
+        {/* Image */}
+        <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+            <img
+                src={story.image}
+                alt={story.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+            {/* Category Badge */}
+            <span className="absolute top-4 left-4 bg-orange-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full z-10">
+                {story.category}
+            </span>
+        </div>
+
+        {/* Content */}
+        <div className="flex flex-col flex-1 p-6">
+            {/* Meta */}
+            <div className="flex items-center gap-3 text-xs text-slate-400 font-medium mb-3">
+                <span className="flex items-center gap-1.5">
+                    <Calendar size={11} /> {story.date}
+                </span>
+                <span className="w-1 h-1 rounded-full bg-slate-300" />
+                <span className="flex items-center gap-1.5">
+                    <Clock size={11} /> 5 min read
+                </span>
+            </div>
+
+            {/* Title */}
+            <h3 className="text-xl font-serif font-medium text-slate-900 mb-3 leading-snug group-hover:text-orange-600 transition-colors duration-300">
+                <Link to={`/stories/${story.id}`}>{story.title}</Link>
+            </h3>
+
+            {/* Excerpt */}
+            <p className="text-sm text-slate-500 font-light leading-relaxed line-clamp-3 mb-5 flex-1">
+                {story.excerpt}
+            </p>
+
+            {/* CTA */}
+            <Link
+                to={`/stories/${story.id}`}
+                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-800 group-hover:text-orange-600 transition-colors duration-300 mt-auto"
+            >
+                Read Story <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+        </div>
+    </motion.article>
+);
+
+// --- FEATURED (LARGE) CARD ---
+const FeaturedCard = ({ story }: { story: any }) => (
+    <motion.article
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        className="group col-span-1 md:col-span-2 lg:col-span-2 flex flex-col md:flex-row bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-500 border border-slate-100"
+    >
+        {/* Image */}
+        <div className="relative w-full md:w-[55%] aspect-[4/3] md:aspect-auto overflow-hidden bg-slate-100 shrink-0">
+            <img
+                src={story.image}
+                alt={story.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/10" />
+            <span className="absolute top-5 left-5 bg-orange-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full z-10">
+                {story.category}
+            </span>
+        </div>
+
+        {/* Content */}
+        <div className="flex flex-col justify-center p-8 lg:p-12">
+            <div className="flex items-center gap-3 text-xs text-slate-400 font-medium mb-4">
+                <span className="flex items-center gap-1.5"><Calendar size={11} /> {story.date}</span>
+                <span className="w-1 h-1 rounded-full bg-slate-300" />
+                <span className="flex items-center gap-1.5"><Clock size={11} /> 7 min read</span>
+            </div>
+            <h3 className="text-3xl md:text-4xl font-serif font-medium text-slate-900 mb-4 leading-tight group-hover:text-orange-600 transition-colors duration-300">
+                <Link to={`/stories/${story.id}`}>{story.title}</Link>
+            </h3>
+            <p className="text-slate-500 font-light leading-relaxed mb-8 text-sm md:text-base">
+                {story.excerpt}
+            </p>
+            <Link
+                to={`/stories/${story.id}`}
+                className="inline-flex items-center gap-3 px-7 py-3 bg-slate-900 text-white text-xs font-bold uppercase tracking-widest rounded-full self-start hover:bg-orange-600 transition-colors duration-300"
+            >
+                Read Full Story <ArrowRight size={14} />
+            </Link>
+        </div>
+    </motion.article>
+);
+
+
+// --- QUOTE CARD ---
+const QuoteCard = () => (
+    <div className="bg-gradient-to-br from-orange-500 to-orange-700 text-white p-8 rounded-2xl flex flex-col justify-center relative overflow-hidden">
+        <div className="absolute -top-4 -right-4 opacity-10">
+            <Quote size={100} />
+        </div>
+        <blockquote className="text-xl md:text-2xl font-serif leading-relaxed relative z-10 mb-5 font-medium">
+            "When meals arrived every morning, our children's smiles returned. Education followed hunger out the door."
+        </blockquote>
+        <cite className="not-italic text-orange-100 font-bold text-xs uppercase tracking-widest">
+            — A Parent from Kavitha Village
+        </cite>
+    </div>
+);
+
+
+// --- MAIN PAGE ---
 const Stories = () => {
-    const [filter, setFilter] = useState("All");
-    const containerRef = useRef(null);
-    const { scrollYProgress } = useScroll({ target: containerRef });
-    const yHero = useTransform(scrollYProgress, [0, 1], [0, 200]);
-
-    // Hero Carousel State
+    const [filter, setFilter] = useState('All');
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % HERO_STORIES.length);
-        }, 6000); // Change every 6 seconds
+        }, 6000);
         return () => clearInterval(timer);
     }, []);
 
     const activeStory = HERO_STORIES[currentIndex];
 
-    // Filter Logic
-    const filteredStories = filter === "All"
+    const filteredStories = filter === 'All'
         ? stories
-        : stories.filter(s => s.category === filter);
+        : stories.filter((s) => s.category === filter);
+
+    // Split: first story is featured, rest are grid cards
+    const [featuredStory, ...gridStories] = filteredStories;
 
     return (
-        <main ref={containerRef} className="bg-[#FDFBF7] min-h-screen text-slate-900 font-sans selection:bg-orange-100 selection:text-orange-900 overflow-x-hidden w-full max-w-[100vw]">
-            <SEO title="Journal - Impact Stories" description="Chronicles of change from the Patel Foundation." />
+        <main className="bg-[#FDFBF7] min-h-screen text-slate-900 font-sans selection:bg-orange-100 selection:text-orange-900 overflow-x-hidden">
+            <SEO title="Journal – Impact Stories | Patel Foundation" description="Chronicles of real change from the Patel Foundation — from Covid relief to education, health camps, and community celebrations." />
 
             <Navbar theme="dark" />
 
-            {/* --- 1. EDITORIAL HERO SLIDER --- */}
-            <section className="relative h-screen w-full flex items-end justify-start overflow-hidden bg-black">
-
-                {/* Background Image Transition */}
+            {/* ─── 1. HERO SLIDER ─── */}
+            <section className="relative h-screen w-full flex items-end overflow-hidden bg-black">
                 <div className="absolute inset-0 z-0">
                     <AnimatePresence mode="popLayout">
                         <motion.img
                             key={activeStory.id}
                             src={activeStory.image}
-                            alt="Hero"
-                            initial={{ opacity: 0, scale: 1.1 }}
+                            alt={activeStory.title}
+                            initial={{ opacity: 0, scale: 1.08 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 1.5 }}
-                            className="absolute inset-0 w-full h-full object-cover opacity-80"
+                            transition={{ duration: 1.6 }}
+                            className="absolute inset-0 w-full h-full object-cover opacity-75"
                         />
                     </AnimatePresence>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/30" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/20" />
                 </div>
 
-                <div className="relative z-10 container mx-auto px-6 pb-20 text-white w-full">
+                <div className="relative z-10 w-full container mx-auto px-6 md:px-12 pb-20">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeStory.id}
                             initial={{ opacity: 0, y: 40 }}
                             animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -40 }}
-                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            exit={{ opacity: 0, y: -30 }}
+                            transition={{ duration: 0.8, ease: 'easeOut' }}
+                            className="max-w-4xl"
                         >
-                            <div className="flex items-center gap-3 mb-6">
-                                <span className="bg-orange-600 text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-sm">
+                            <div className="flex items-center gap-3 mb-5">
+                                <span className="bg-orange-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full">
                                     {activeStory.category}
                                 </span>
-                                <span className="flex items-center gap-2 text-white/80 text-sm font-medium tracking-wide">
-                                    <Calendar size={14} /> {activeStory.date}
+                                <span className="flex items-center gap-2 text-white/70 text-xs font-medium tracking-widest uppercase">
+                                    <Calendar size={12} /> {activeStory.date}
                                 </span>
                             </div>
 
-                            <h1 className="text-6xl md:text-8xl font-serif font-medium leading-[0.9] mb-6 max-w-4xl tracking-tight">
+                            <h1 className="text-5xl sm:text-7xl md:text-8xl font-serif font-medium leading-[0.9] mb-6 text-white tracking-tight">
                                 {activeStory.title}
                             </h1>
 
-                            <p className="text-xl md:text-2xl text-white/80 max-w-2xl font-light leading-relaxed mb-10">
+                            <p className="text-lg md:text-xl text-white/75 max-w-2xl font-light leading-relaxed mb-10">
                                 {activeStory.subtitle}
                             </p>
 
-                            <div className="flex gap-4">
+                            <div className="flex flex-wrap gap-4">
                                 <Link
                                     to={`/stories/${activeStory.id}`}
-                                    className="px-8 py-4 bg-white text-black font-bold text-sm tracking-widest uppercase rounded-full hover:bg-orange-500 hover:text-white transition-colors flex items-center gap-3"
+                                    className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-bold text-xs tracking-widest uppercase rounded-full hover:bg-orange-500 hover:text-white transition-colors duration-300"
                                 >
-                                    Read Full Story <ArrowRight size={18} />
+                                    Read Full Story <ArrowRight size={16} />
                                 </Link>
-                                <button className="px-8 py-4 border border-white/30 text-white font-bold text-sm tracking-widest uppercase rounded-full hover:bg-white/10 transition-colors flex items-center gap-3 backdrop-blur-sm">
-                                    <PlayCircle size={18} /> Watch Film
-                                </button>
                             </div>
                         </motion.div>
                     </AnimatePresence>
 
-                    {/* Progress Indicators */}
-                    <div className="absolute bottom-10 right-6 flex gap-3">
+                    {/* Slide indicators */}
+                    <div className="absolute bottom-10 right-6 md:right-12 flex gap-2">
                         {HERO_STORIES.map((_, idx) => (
                             <button
                                 key={idx}
                                 onClick={() => setCurrentIndex(idx)}
-                                className={`w-12 h-1 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-orange-500' : 'bg-white/30 hover:bg-white'}`}
+                                className={`h-1 rounded-full transition-all duration-500 ${idx === currentIndex ? 'w-10 bg-orange-500' : 'w-5 bg-white/30 hover:bg-white/60'}`}
                             />
                         ))}
                     </div>
                 </div>
             </section>
 
+            {/* ─── 2. THE JOURNAL GRID ─── */}
+            <section className="py-24 px-6">
+                <div className="container mx-auto max-w-7xl">
 
-            {/* --- 2. THE JOURNAL SECTION --- */}
-            <section className="pt-12 pb-24 px-6 relative">
-
-
-                <div className="container mx-auto">
-
-                    {/* Header & Filter */}
-                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+                    {/* Section Header */}
+                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-8 border-b border-slate-100 pb-10">
                         <div>
-                            <span className="text-orange-600 font-bold uppercase tracking-widest text-xs mb-2 block">The Impact Log</span>
-                            <h2 className="text-4xl md:text-5xl font-serif text-slate-900">Latest Chronicles</h2>
+                            <span className="text-orange-600 font-bold uppercase tracking-widest text-xs block mb-2">Our Impact Log</span>
+                            <h2 className="text-4xl md:text-5xl font-serif text-slate-900 leading-tight">
+                                Stories That <br className="hidden md:block" />
+                                <span className="italic text-slate-400">Matter.</span>
+                            </h2>
                         </div>
 
+                        {/* Category Filter Pills */}
                         <div className="flex flex-wrap gap-2">
-                            {CATEGORIES.map(cat => (
+                            {CATEGORIES.map((cat) => (
                                 <button
                                     key={cat}
                                     onClick={() => setFilter(cat)}
-                                    className={`px-5 py-2 rounded-full text-sm font-bold border transition-all ${filter === cat ? 'bg-slate-900 text-white border-slate-900' : 'bg-transparent text-slate-500 border-slate-200 hover:border-slate-900 hover:text-slate-900'}`}
+                                    className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-300 ${filter === cat
+                                        ? 'bg-slate-900 text-white border-slate-900'
+                                        : 'bg-transparent text-slate-500 border-slate-200 hover:border-slate-700 hover:text-slate-900'
+                                        }`}
                                 >
                                     {cat}
                                 </button>
@@ -167,94 +285,63 @@ const Stories = () => {
                         </div>
                     </div>
 
-
-                    {/* MASONRY / GRID LAYOUT */}
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 gap-y-16">
-
-                        {/* Quote Card (Insert randomly or fixed position) */}
-                        <div className="bg-orange-600 text-white p-10 rounded-xl flex flex-col justify-center relative overflow-hidden group">
-                            <div className="absolute top-4 right-4 text-orange-400 opacity-30">
-                                <Quote size={64} />
-                            </div>
-                            <blockquote className="text-2xl font-serif leading-relaxed relative z-10 mb-6 font-medium">
-                                "When the schools closed, we thought learning was over. Then the tablets arrived. Now, I code every day."
-                            </blockquote>
-                            <cite className="not-italic text-orange-200 font-mono text-sm uppercase tracking-widest">
-                                — Rahul, Age 14, Digital Access Scholar
-                            </cite>
+                    {/* Featured Story (First one, full-width) */}
+                    {featuredStory && (
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                            <FeaturedCard story={featuredStory} />
+                            <QuoteCard />
                         </div>
+                    )}
 
-                        {filteredStories.map((story, index) => (
-                            <motion.article
-                                key={story.id}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-100px" }}
-                                transition={{ delay: index * 0.1, duration: 0.8 }}
-                                className="group cursor-pointer flex flex-col"
-                            >
-                                <div className="relative aspect-[4/3] overflow-hidden rounded-xl mb-6 bg-slate-200">
-                                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10" />
-                                    <img
-                                        src={story.image}
-                                        alt={story.title}
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                    />
-                                    <div className="absolute top-4 left-4 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-900 rounded-sm z-20">
-                                        {story.category}
-                                    </div>
-                                </div>
+                    {/* Regular Cards Grid */}
+                    {gridStories.length > 0 && (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {gridStories.map((story, i) => (
+                                <StoryCard key={story.id} story={story} index={i} />
+                            ))}
+                        </div>
+                    )}
 
-                                <div className="flex items-center gap-4 text-xs text-slate-400 font-medium mb-3">
-                                    <span className="flex items-center gap-1"><Calendar size={12} /> {story.date}</span>
-                                    <span className="w-1 h-1 bg-slate-300 rounded-full" />
-                                    <span>5 min read</span>
-                                </div>
+                    {/* No Results */}
+                    {filteredStories.length === 0 && (
+                        <div className="text-center py-24 text-slate-400">
+                            <p className="text-xl font-serif">No stories in this category yet.</p>
+                        </div>
+                    )}
 
-                                <h3 className="text-3xl font-serif font-medium text-slate-900 mb-3 group-hover:text-orange-600 transition-colors leading-tight">
-                                    <Link to={`/stories/${story.id}`}>
-                                        {story.title}
-                                    </Link>
-                                </h3>
-
-                                <p className="text-slate-500 font-light leading-relaxed mb-4 line-clamp-3">
-                                    {story.excerpt}
-                                </p>
-
-                                <Link to={`/stories/${story.id}`} className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-slate-900 group-hover:text-orange-600 transition-colors mt-auto">
-                                    Read Story <ArrowRight size={14} className="ml-2 transition-transform group-hover:translate-x-1" />
-                                </Link>
-                            </motion.article>
-                        ))}
-
-                    </div>
-
-                    {/* Load More Button */}
-                    <div className="flex justify-center mt-20">
-                        <button className="px-10 py-4 border border-slate-200 hover:border-slate-900 text-slate-500 hover:text-slate-900 rounded-full text-sm font-bold uppercase tracking-widest transition-all">
-                            Load More Stories
+                    {/* Bottom Actions */}
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-20 pt-12 border-t border-slate-100">
+                        <button
+                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-600 hover:text-slate-900 transition-colors"
+                        >
+                            <ArrowUp size={14} /> Back to Top
                         </button>
                     </div>
 
                 </div>
             </section>
 
-            {/* --- 3. NEWSLETTER / IMPACT UPDATE --- */}
+            {/* ─── 3. NEWSLETTER ─── */}
             <section className="bg-slate-900 text-white py-24 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-10 pointer-events-none" />
-                <div className="container mx-auto px-6 text-center relative z-10 max-w-2xl">
-                    <BookOpen size={48} className="mx-auto mb-8 text-orange-500" />
-                    <h2 className="text-4xl md:text-5xl font-serif mb-6">Stories straight to your inbox.</h2>
-                    <p className="text-lg text-slate-400 mb-10 font-light">
-                        No spam. No fluff. Just real stories of how your support is changing the world, once a month.
+                <div className="absolute inset-0 opacity-5 pointer-events-none"
+                    style={{ backgroundImage: 'radial-gradient(circle at 30% 50%, #ea580c 0%, transparent 60%)' }}
+                />
+                <div className="container mx-auto px-6 text-center relative z-10 max-w-xl">
+                    <BookOpen size={40} className="mx-auto mb-6 text-orange-500" />
+                    <h2 className="text-4xl md:text-5xl font-serif mb-4 leading-tight">
+                        Stories, straight <br /> to your inbox.
+                    </h2>
+                    <p className="text-slate-400 mb-10 font-light leading-relaxed">
+                        No spam. Just real stories of how your support is changing the world — once a month.
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-4">
+                    <div className="flex flex-col sm:flex-row gap-3">
                         <input
                             type="email"
                             placeholder="Your email address"
-                            className="flex-1 px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all font-light"
+                            className="flex-1 px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all font-light text-sm"
                         />
-                        <button className="px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-full transition-colors uppercase tracking-widest text-sm">
+                        <button className="px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-full transition-colors uppercase tracking-widest text-xs whitespace-nowrap">
                             Subscribe
                         </button>
                     </div>

@@ -9,10 +9,10 @@ import { toast } from 'sonner';
 
 const impactGallery = [
     {
-        title: 'Project Vidya',
+        title: 'Studying',
         category: 'Education',
-        image: MEDIA.projects.vidya,
-        stat: '1,200+',
+        image: "src/assets/pt9.jpg",
+        stat: '500+',
         statLabel: 'Students Enrolled',
         desc: "Transforming rural education through digital classrooms, scholarship programs, and comprehensive mentorship."
     },
@@ -394,28 +394,28 @@ const Donate = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {[
                             {
-                                title: 'Project Vidya',
+                                title: 'Teaching',
                                 category: 'Education',
-                                image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=2022',
-                                stat: '1,200 Students'
+                                image: 'src/assets/pt9.jpg',
+                                stat: '500+ Students'
                             },
                             {
-                                title: 'Mission Jal',
-                                category: 'Water',
-                                image: 'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?q=80&w=2070',
-                                stat: '50 Villages'
+                                title: 'Nutrition',
+                                category: 'Food',
+                                image: 'src/assets/pt1.jpeg',
+                                stat: '100000+ Meals'
                             },
                             {
                                 title: 'Mobile Health',
                                 category: 'Healthcare',
-                                image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070',
-                                stat: '15k Patients'
+                                image: 'src/assets/p13.jpeg',
+                                stat: '1k Patients'
                             },
                             {
-                                title: 'Green Earth',
-                                category: 'Sustainability',
-                                image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2070',
-                                stat: '50k Trees'
+                                title: 'Covid Relief',
+                                category: 'Relief program',
+                                image: 'src/assets/pt5.jpg',
+                                stat: '5k Relief'
                             }
                         ].map((work, idx) => (
                             <motion.div

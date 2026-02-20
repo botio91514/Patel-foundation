@@ -1,11 +1,11 @@
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Facebook, Youtube, Instagram, Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook', color: 'hover:bg-[#1877F2]' },
-    { icon: Twitter, href: '#', label: 'Twitter', color: 'hover:bg-[#000000]' },
-    { icon: Instagram, href: '#', label: 'Instagram', color: 'hover:bg-[#E4405F]' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn', color: 'hover:bg-[#0A66C2]' },
+    { icon: Facebook, href: 'https://www.facebook.com/patelfoundation2019', label: 'Facebook', color: 'hover:bg-[#1877F2]' },
+    { icon: Youtube, href: 'https://www.youtube.com/@PatelFoundationUSA', label: 'YouTube', color: 'hover:bg-[#FF0000]' },
+    { icon: Instagram, href: 'https://www.instagram.com/the_patelfoundation/', label: 'Instagram', color: 'hover:bg-[#E4405F]' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/patel-foundation-usa-83537b3ab/', label: 'LinkedIn', color: 'hover:bg-[#0A66C2]' },
 ];
 
 const SocialSidebar = () => {

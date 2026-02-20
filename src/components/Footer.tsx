@@ -29,7 +29,7 @@ const footerLinks = {
 
 const socialLinks = [
   { icon: Facebook, href: SITE_CONFIG.socials.facebook, label: 'Facebook' },
-  { icon: Twitter, href: SITE_CONFIG.socials.twitter, label: 'Twitter' },
+
   { icon: Instagram, href: SITE_CONFIG.socials.instagram, label: 'Instagram' },
   { icon: Linkedin, href: SITE_CONFIG.socials.linkedin, label: 'LinkedIn' },
   { icon: Youtube, href: SITE_CONFIG.socials.youtube, label: 'YouTube' },

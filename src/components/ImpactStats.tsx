@@ -6,28 +6,28 @@ import ImpactMap from '@/components/ImpactMap';
 const stats = [
   {
     id: 1,
-    value: 2500000,
+    value: 25000,
     label: "Lives Impacted",
     suffix: "+",
     color: "text-blue-400"
   },
   {
     id: 2,
-    value: 150000,
+    value: 1500,
     label: "Students Educated",
     suffix: "+",
     color: "text-amber-400"
   },
   {
     id: 3,
-    value: 52,
+    value: 5,
     label: "Medical Facilities",
     suffix: "",
     color: "text-rose-400"
   },
   {
     id: 4,
-    value: 28,
+    value: 2,
     label: "Countries Served",
     suffix: "",
     color: "text-emerald-400"

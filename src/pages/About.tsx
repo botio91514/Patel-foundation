@@ -29,7 +29,7 @@ const RevealTitle = ({ children, className = "" }: { children: any, className?: 
 
 const Counter = ({ from, to, duration = 2 }: { from: number, to: number, duration?: number }) => {
     const nodeRef = useRef<HTMLSpanElement>(null);
-    const inView = useInView(nodeRef, { once: true, margin: "-100px" });
+    const inView = useInView(nodeRef, { once: true, margin: "0px" });
 
     useEffect(() => {
         if (!inView) return;
@@ -44,7 +44,7 @@ const Counter = ({ from, to, duration = 2 }: { from: number, to: number, duratio
         return () => controls.stop();
     }, [from, to, duration, inView]);
 
-    return <span ref={nodeRef} />;
+    return <span ref={nodeRef}>0</span>;
 };
 
 const FadeIn = ({ children, delay = 0, className = "" }: { children: any, delay?: number, className?: string }) => {
@@ -79,12 +79,14 @@ const VALUES = [
 ];
 
 const TEAM = [
-    { name: "Dr. Rajesh Patel", role: "Founder & Chairman", img: MEDIA.team.founder },
-    { name: "Sarah Jenkins", role: "Global CEO", img: MEDIA.team.ceo },
-    { name: "Amit Singh", role: "Head of Operations", img: MEDIA.team.ops },
-    { name: "Dr. Elena Rossi", role: "Chief Medical Officer", img: MEDIA.team.medical },
-    { name: "Michael Chang", role: "CFO", img: MEDIA.team.cfo },
-    { name: "Priya Desai", role: "Director of Education", img: MEDIA.team.director },
+    { name: "Sunny Patel", role: "Founder & Chairman", img: "" },
+    { name: "Monika Patel", role: "Global CEO", img: "" },
+    { name: "Jignes Patel", role: "Head of Operations", img: "src/assets/img/jignesh-patel.png" },
+    { name: "Shreya Patel", role: "Chief Medical Officer", img: "src/assets/img/shreya-patel.png" },
+    { name: "Deepak Macwan", role: "CFO", img: "src/assets/img/deepal-macwan.png" },
+    { name: "Hiral Macwan", role: "Director of Education", img: "src/assets/img/hiral-macwan.png" },
+    { name: "Sejal Panchal", role: "Role / Title", img: "src/assets/img/sejal-panchal.png" },
+    { name: "Parth Patel", role: "Role / Title", img: "src/assets/img/parth-patel.png" },
 ];
 
 // --- MOUSE MOVEMENT LOGIC ---
@@ -92,9 +94,17 @@ const MouseTimeline = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
     const x = useSpring(0, { damping: 30, stiffness: 200 });
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     const onMouseMove = (e: React.MouseEvent) => {
-        if (!containerRef.current || !contentRef.current) return;
+        if (isMobile || !containerRef.current || !contentRef.current) return;
 
         const containerWidth = containerRef.current.offsetWidth;
         const contentWidth = contentRef.current.scrollWidth;
@@ -107,35 +117,34 @@ const MouseTimeline = () => {
     return (
         <section
             ref={containerRef}
-            className="py-20 bg-white overflow-x-auto md:overflow-hidden cursor-grab md:cursor-crosshair no-scrollbar"
+            className="py-12 md:py-20 bg-white overflow-x-auto md:overflow-hidden cursor-grab md:cursor-crosshair no-scrollbar touch-pan-x"
             onMouseMove={onMouseMove}
         >
-            <div className="container mx-auto px-6 mb-12 pointer-events-none">
+            <div className="container mx-auto px-6 mb-8 md:mb-12 pointer-events-none sticky left-0">
                 <span className="text-orange-600 font-bold uppercase tracking-widest text-xs">History</span>
-                <h2 className="text-5xl font-serif mt-4 text-slate-900 leading-tight">
+                <h2 className="text-4xl md:text-5xl font-serif mt-4 text-slate-900 leading-tight">
                     The Journey <br /> So Far.
                 </h2>
-                <p className="text-slate-400 text-sm mt-4 flex items-center gap-2">
+                <p className="text-slate-400 text-xs md:text-sm mt-4 flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" /> Swipe or move cursor to explore
                 </p>
             </div>
 
             <motion.div
                 ref={contentRef}
-                style={{ x }}
-                className="flex gap-24 px-6 sm:px-20 w-max"
+                style={{ x: isMobile ? 0 : x }}
+                className="flex gap-12 md:gap-24 px-6 md:px-20 w-max pb-8"
             >
                 {TIMELINE.map((item, i) => (
-                    <div key={i} className="w-[500px] border-l-2 border-slate-100 pl-8 relative py-4 group hover:border-orange-200 transition-colors select-none">
-                        <span className="text-8xl font-serif font-bold text-slate-50 absolute -top-4 -left-6 z-0 group-hover:text-orange-50 transition-colors">{item.year}</span>
-                        <div className="relative z-10 mt-12">
-                            <span className="text-orange-600 font-bold text-xl block mb-2">{item.year}</span>
-                            <h3 className="text-3xl font-serif mb-4 text-slate-900">{item.title}</h3>
-                            <p className="text-slate-500 leading-relaxed">{item.desc}</p>
+                    <div key={i} className="w-[85vw] md:w-[500px] shrink-0 border-l-2 border-slate-100 pl-6 md:pl-8 relative py-4 group hover:border-orange-200 transition-colors select-none">
+                        <span className="text-6xl md:text-8xl font-serif font-bold text-slate-50 absolute -top-4 -left-4 md:-left-6 z-0 group-hover:text-orange-50 transition-colors">{item.year}</span>
+                        <div className="relative z-10 mt-8 md:mt-12">
+                            <span className="text-orange-600 font-bold text-lg md:text-xl block mb-2">{item.year}</span>
+                            <h3 className="text-2xl md:text-3xl font-serif mb-4 text-slate-900">{item.title}</h3>
+                            <p className="text-slate-500 text-sm md:text-base leading-relaxed">{item.desc}</p>
                         </div>
                     </div>
                 ))}
-                <div className="w-[20vw]" />
             </motion.div>
         </section>
     );
@@ -179,18 +188,23 @@ const About = () => {
                     />
                 </motion.div>
 
-                <motion.div style={{ y: yHeroText }} className="relative z-10 text-center max-w-5xl px-6 mt-10">
+                <motion.div style={{ y: yHeroText }} className="relative z-10 text-center max-w-5xl px-4 md:px-6 mt-10 w-full">
                     <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.5 }}>
-                        <span className="inline-block py-2 px-6 border border-white/20 rounded-full text-xs font-bold uppercase tracking-[0.3em] mb-8 bg-white/10 backdrop-blur-md shadow-sm text-white">
+                        <span className="inline-block py-2 px-4 md:px-6 border border-white/20 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] mb-6 md:mb-8 bg-white/10 backdrop-blur-md shadow-sm text-white text-center break-words max-w-full">
                             Est. 2010 • Kavitha, Gujarat
                         </span>
                     </motion.div>
-                    <RevealTitle className="text-5xl md:text-9xl font-serif font-medium leading-[0.9] tracking-tighter mb-8 text-white">
+                    <motion.h1
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3, duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+                        className="text-5xl sm:text-7xl md:text-9xl font-serif font-medium leading-[0.9] tracking-tighter mb-6 md:mb-8 text-white"
+                    >
                         From a Village <br /> <span className="italic text-white/70">to a Movement.</span>
-                    </RevealTitle>
+                    </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 1 }}
-                        className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed font-light text-shadow-sm"
+                        className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed font-light text-shadow-sm px-4 md:px-0"
                     >
                         What started with a single meal in Kavitha has grown into a trans-continental force for good, bridging the United States and India.
                     </motion.p>
@@ -224,22 +238,22 @@ const About = () => {
                             </FadeIn>
                         </div>
                         <div className="relative">
-                            <div className="grid grid-cols-2 gap-4">
-                                <motion.div whileHover={{ scale: 0.98 }} className="bg-white p-8 rounded-2xl border border-slate-100 shadow-xl shadow-slate-200/50">
-                                    <h3 className="text-4xl font-bold text-orange-500 mb-2 flex items-baseline"><Counter from={0} to={500} duration={2.5} />k+</h3>
-                                    <p className="text-slate-400 text-sm uppercase tracking-widest">Meals Served</p>
+                            <div className="grid grid-cols-2 gap-3 md:gap-4">
+                                <motion.div whileHover={{ scale: 0.98 }} className="bg-white p-5 md:p-8 rounded-2xl border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col justify-center">
+                                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-orange-500 mb-1 md:mb-2 flex items-baseline gap-0.5"><Counter from={0} to={500} duration={2.5} /><span>k+</span></h3>
+                                    <p className="text-slate-400 text-[10px] md:text-sm uppercase tracking-widest leading-tight">Meals</p>
                                 </motion.div>
-                                <motion.div whileHover={{ scale: 0.98 }} className="bg-white p-8 rounded-2xl border border-slate-100 shadow-xl shadow-slate-200/50 mt-12">
-                                    <h3 className="text-4xl font-bold text-orange-500 mb-2 flex items-baseline"><Counter from={0} to={200} duration={1} />+</h3>
-                                    <p className="text-slate-400 text-sm uppercase tracking-widest">Picnics Organized</p>
+                                <motion.div whileHover={{ scale: 0.98 }} className="bg-white p-5 md:p-8 rounded-2xl border border-slate-100 shadow-xl shadow-slate-200/50 md:mt-12 flex flex-col justify-center">
+                                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-orange-500 mb-1 md:mb-2 flex items-baseline gap-0.5"><Counter from={0} to={200} duration={1} /><span>+</span></h3>
+                                    <p className="text-slate-400 text-[10px] md:text-sm uppercase tracking-widest leading-tight">Picnics</p>
                                 </motion.div>
-                                <motion.div whileHover={{ scale: 0.98 }} className="bg-white p-8 rounded-2xl border border-slate-100 shadow-xl shadow-slate-200/50">
-                                    <h3 className="text-4xl font-bold text-orange-500 mb-2 flex items-baseline"><Counter from={0} to={12} duration={2.5} /></h3>
-                                    <p className="text-slate-400 text-sm uppercase tracking-widest">Villages Adopted</p>
+                                <motion.div whileHover={{ scale: 0.98 }} className="bg-white p-5 md:p-8 rounded-2xl border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col justify-center">
+                                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-orange-500 mb-1 md:mb-2 flex items-baseline"><Counter from={0} to={12} duration={2.5} /></h3>
+                                    <p className="text-slate-400 text-[10px] md:text-sm uppercase tracking-widest leading-tight">Villages</p>
                                 </motion.div>
-                                <motion.div whileHover={{ scale: 0.98 }} className="bg-white p-8 rounded-2xl border border-slate-100 shadow-xl shadow-slate-200/50 mt-12">
-                                    <h3 className="text-4xl font-bold text-orange-500 mb-2 flex items-baseline">100%</h3>
-                                    <p className="text-slate-400 text-sm uppercase tracking-widest">Graduation Rate</p>
+                                <motion.div whileHover={{ scale: 0.98 }} className="bg-white p-5 md:p-8 rounded-2xl border border-slate-100 shadow-xl shadow-slate-200/50 md:mt-12 flex flex-col justify-center">
+                                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-orange-500 mb-1 md:mb-2">100%</h3>
+                                    <p className="text-slate-400 text-[10px] md:text-sm uppercase tracking-widest leading-tight">Graduation</p>
                                 </motion.div>
                             </div>
                         </div>

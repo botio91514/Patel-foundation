@@ -61,7 +61,7 @@ const About = () => {
               </div>
 
               <h2 className="text-4xl md:text-7xl font-serif font-medium leading-[1.1] mb-8 text-foreground">
-                Rooted in Kavitha. <br />
+                Rooted in India. <br />
                 <span className="text-muted-foreground italic">Growing Globally.</span>
               </h2>
 

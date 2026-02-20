@@ -1,77 +1,124 @@
-
 import { MEDIA } from '@/data/media';
 
 export const stories = [
     {
         id: 1,
-        title: "A New Beginning for Maya",
-        category: "Education",
-        date: "March 15, 2024",
-        author: "Sarah Johnson",
-        excerpt: "How a scholarship changed the trajectory of a young girl's life in rural India, opening doors to medical school.",
+        title: "Providing Household Essentials During Lockdown",
+        category: "Covid Relief",
+        date: "May 10, 2020",
+        author: "Rajesh Patel",
+        excerpt: "When the unexpected lockdown hit, we mobilized our volunteers to deliver crucial household essentials to daily wage earners who lost their livelihood.",
         content: `
-            <p>Maya gathered her books and walked the familiar dusty path to her school, a smile playing on her lips. Just a year ago, this daily routine seemed like an impossible dream.</p>
-            <p>Growing up in a small village in rural India, Maya's family struggled to make ends meet. Education was a luxury they simply couldn't afford, especially for a girl. "My parents wanted me to study," Maya recalls, "but with three younger siblings and a meager farm income, they had to prioritize survival over school fees."</p>
-            <p>That's when the Patel Foundation's "Educate a Girl" initiative stepped in. Identifying Maya's potential through local community leaders, the foundation offered her a full scholarship covering tuition, books, and uniforms.</p>
-            <p>Today, Maya is not just top of her class; she is a beacon of hope for her entire village. She has set her sights on medical school, determined to bring better healthcare back to her community. "I want to be a doctor so no one in my village has to suffer from treatable illnesses," she says with determination.</p>
-            <p>Maya's story is just one of thousands. By removing financial barriers, we are unlocking the vast potential of young minds who will go on to shape the future of their nations.</p>
+            <p>During the peak of the Corona pandemic, the hardest hit were the daily wage earners who suddenly found themselves without an income. With markets closed and movement restricted, acquiring basic household essentials became a life-threatening challenge.</p>
+            <p>Our foundation quickly pivoted all operations to focus on immediate pandemic relief. We created 'Care Kits' containing ample rice, flour, cooking oil, lentils, and essential spices that could sustain a family of five for an entire month.</p>
+            <p>"We knew we couldn't wait for the situation to normalize," explained one of our local coordinators. "Hunger doesn't wait. We used our existing school bus networks to transport tonnes of raw food materials directly into the most affected rural districts."</p>
+            <p>Over the course of three months, our incredible team of volunteers worked day and night, ensuring that over 10,000 households received their essential kits safely right at their doorsteps.</p>
         `,
-        image: MEDIA.blog.maya
+        image: MEDIA.hero.relief // Placeholder image
     },
-    {
-        id: 2,
-        title: "Digital Classrooms in Kajiado",
-        category: "Digital Access",
-        date: "February 28, 2024",
-        author: "David Chen",
-        excerpt: "How solar-powered tablets are bridging the digital divide for students in remote Kenya.",
-        content: `
-            <p>For students in Kajiado, the internet was a myth. Textbooks were shared, one for every ten students. The curriculum was outdated, and the world was moving ahead without them.</p>
-            <p>In February, the Patel Foundation launched 'Project Connect'. We didn't just donate computers; we built a solar-powered digital ecosystem. Each student received a low-cost, rugged tablet pre-loaded with interactive learning modules.</p>
-            <p>"I had never seen a map of the world before," says 12-year-old Isaac. "Now I can zoom in on any country. I want to learn coding so I can build apps for farmers like my father."</p>
-            <p>This project is proving that talent is distributed equally, but opportunity is not. By bringing the digital world to Kajiado, we are giving these brilliant young minds the tools to compete in the 21st century.</p>
-        `,
-        image: MEDIA.blog.kajiado
-    },
-    {
-        id: 3,
-        title: "Mobile Clinic Reaches Remote Heights",
-        category: "Healthcare",
-        date: "February 10, 2024",
-        author: "Dr. Amara Patel",
-        excerpt: "Our team trekked through mountainous terrain to deliver essential vaccines and checkups to isolated families.",
-        content: `
-            <p>The road to Gorkha is long, winding, and often impassable. For the families living in these high-altitude regions, accessing modern healthcare often means a two-day journey on foot. As a result, many minor ailments turn into life-threatening conditions.</p>
-            <p>Last month, the Patel Foundation's "Health on Wheels" initiative took on the challenge. Loading our 4x4 mobile clinic with vaccines, diagnostic tools, and medicines, a team of four doctors and three nurses set out to reach the unreached.</p>
-        `,
-        image: MEDIA.blog.clinic
-    },
+
+
     {
         id: 4,
-        title: "Empowering Women Artisans",
-        category: "Women",
-        date: "January 25, 2024",
-        author: "Priya Singh",
-        excerpt: "From homemakers to entrepreneurs: The journey of the 'Shakti' collective in Gujarat.",
+        title: "Village-Wide Eye Health Camps",
+        category: "Health & Vision",
+        date: "August 12, 2021",
+        author: "Priya Desai",
+        excerpt: "Restoring sight and hope. We organized a massive, village-wide eye check-up camp, providing free glasses and cataract surgeries to hundreds of seniors.",
         content: `
-            <p>In the vibrant state of Gujarat, a quiet revolution is taking place. The 'Shakti' collective, supported by the Patel Foundation, is turning traditional handicraft skills into a source of sustainable income for over 200 women.</p>
-            <p>It started with a simple idea: the embroidery and weaving skills passed down through generations had immense market value. What was missing was market access and fair pricing.</p>
+            <p>Vision problems in rural areas often go undiagnosed for years, leading to preventable blindness and severe loss of livelihood for the elderly. Recognizing this silent crisis, we organized a <strong>comprehensive Eye Health Camp</strong> that covered the entire village and surrounding hamlets.</p>
+            
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80" alt="Eye checkup camp setup" style="width: 100%; border-radius: 12px; margin: 2rem 0; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);" />
+            
+            <p>Over the course of three days, our team of dedicated volunteer ophthalmologists and nurses screened over 1,500 residents. The initiative was vast: from basic vision tests for school children to complex exams for the elderly.</p>
+            
+            <p>"Many of these people thought their loss of vision was just a natural, unavoidable part of aging," explained Dr. Mehta, the lead surgeon at the camp. "When we handed them a pair of prescription glasses, it was as if we had given them a new life."</p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&q=80" alt="Doctor examining patient" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; margin: 0;" />
+                <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=800&q=80" alt="Patient trying new glasses" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; margin: 0;" />
+            </div>
+            
+            <p>Thanks to the generosity of our donors, not only did we distribute over 800 free pairs of custom prescription glasses, but we also identified and sponsored 120 individuals for immediate, free cataract surgeries at the district hospital.</p>
+
+            <p>The smiles on their faces—seeing clearly for the first time in a decade—reminded us exactly why we do this work. It wasn't just about healthcare; it was about restoring dignity, independence, and joy to the village.</p>
         `,
-        image: MEDIA.blog.artisans
+        image: MEDIA.projects.health // Main thumbnail image
     },
     {
         id: 5,
-        title: "The Oxygen Mission",
-        category: "Pandemic Relief",
-        date: "April 12, 2021",
-        author: "Rahul Varma",
-        excerpt: "When the second wave hit, we pivoted our entire logistics network to deliver life-saving oxygen to rural hospitals.",
+        title: "After-School Education Support",
+        category: "Education",
+        date: "September 05, 2022",
+        author: "Sarah Johnson",
+        excerpt: "Bridging the learning gap. We launched after-school tutoring programs to help children from disadvantaged backgrounds stay on track with their education.",
         content: `
-            <p>It was a race against time. The second wave of the pandemic overwhelmed urban hospitals, but the situation in rural districts was catastrophic. Supply lines were broken, and oxygen was running out.</p>
-            <p>The Patel Foundation paused all non-emergency programs. We converted our school buses into oxygen delivery units. We sourced 500 concentrators from overseas and flew them in via private cargo.</p>
-            <p>"At 2 AM, the truck arrived," recalls Dr. Sharma from a district hospital in Bihar. "We had 20 patients on critical support with only an hour of oxygen left. The Patel Foundation team literally saved those lives."</p>
-            <p>This mission taught us the power of agility. In times of crisis, an organization must be willing to tear up the rulebook and do whatever it takes to save lives.</p>
+            <p>For many children in rural areas, the end of the school day marks the beginning of household chores or farm work. Without a quiet place to study or someone to help with homework, falling behind is almost inevitable.</p>
+            <p>To combat this, the Patel Foundation introduced the <strong>After-School Education Support</strong> program. We transformed community halls into vibrant evening learning centers where children can receive dedicated academic support.</p>
+            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200&q=80" alt="Children studying together" style="width: 100%; border-radius: 12px; margin: 2rem 0; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);" />
+            <p>"Having a teacher explain math concepts slowly in the evening changed everything for my daughter," shares a grateful mother from Kavitha. Over 500 children are now enrolled across three villages, and the improvement in academic performance has been astounding.</p>
+            <p>Our volunteers don't just teach the curriculum; they inspire confidence, foster curiosity, and show these resilient students that their dreams are within reach.</p>
         `,
-        image: MEDIA.blog.oxygen
+        image: MEDIA.hero.education
+    },
+    {
+        id: 6,
+        title: "Picnics for Students",
+        category: "Community & Joy",
+        date: "December 14, 2022",
+        author: "Amit Singh",
+        excerpt: "Combining learning with laughter. We organized massive outdoor picnics for students to explore the world beyond their village borders.",
+        content: `
+            <p>We believe that joy is an essential component of childhood development. While academic excellence is crucial, exploring nature and experiencing new environments teaches lessons that textbooks simply cannot.</p>
+            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1200&q=80" alt="Students enjoying a picnic" style="width: 100%; border-radius: 12px; margin: 2rem 0; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);" />
+            <p>Last winter, we organized our largest <strong>Educational Picnic</strong>, taking over 300 students on a trip to regional science centers, historical sites, and sprawling botanical gardens. For many of these children, it was their first time traveling outside their village district.</p>
+            <p>The air was filled with laughter, songs, and endless questions. These outings not only strengthen the bond between students and mentors but also gently expose them to the vastness of the world, sparking curiosity and immense joy.</p>
+        `,
+        image: MEDIA.events.picnic
+    },
+    {
+        id: 7,
+        title: "Village Competitions & Activities",
+        category: "Youth Empowerment",
+        date: "March 21, 2023",
+        author: "Dr. Rajesh Patel",
+        excerpt: "Fostering teamwork and leadership through annual sports leagues, spelling bees, and creative arts competitions.",
+        content: `
+            <p>Healthy competition brings out the best in youth, teaching them resilience, teamwork, and the value of hard work. To foster these essential life skills, the Patel Foundation hosts the annual <strong>Village Competitions & Activities</strong> festival.</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+                <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800&q=80" alt="Kids participating in activities" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; margin: 0;" />
+                <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=800&q=80" alt="Award ceremony" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; margin: 0;" />
+            </div>
+            <p>The week-long event features a wide array of activities including cricket and football tournaments, spelling bees, traditional dance competitions, and public speaking contests. It is a time when the entire community gathers to celebrate the incredible talents of their children.</p>
+            <p>Winners are awarded scholarships, educational materials, and trophies, but the true prize is the confidence instilled in every participant. It proves that every child has a unique brilliance waiting to be discovered and celebrated.</p>
+        `,
+        image: MEDIA.hero.future
+    },
+    {
+        id: 8,
+        title: "Nourishing the Future: Daily Meals & Sunday Feasts",
+        category: "Nutrition",
+        date: "July 10, 2023",
+        author: "Anita Patel",
+        excerpt: "Tackling childhood malnutrition by providing daily nutritious meals and a special, highly anticipated Sunday Feast for all the children in the village.",
+        content: `
+            <p>A child cannot learn or grow on an empty stomach. Recognizing the severe impact of early malnutrition in rural areas, we launched the <strong>Nourishing the Future</strong> initiative. Our mission is simple: no child in our adopted village should ever go to sleep hungry.</p>
+            
+            <img src="https://images.unsplash.com/photo-1767452455107-16c8ff585b2b?w=1200&q=80" alt="Fresh meals prepared for children" style="width: 100%; border-radius: 12px; margin: 2rem 0; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);" />
+            
+            <p>Every single day, our community kitchens spring to life before dawn, preparing fresh, hot, and highly nutritious meals. These meals follow a dietician-approved menu, ensuring the children receive the exact balance of proteins, vitamins, and carbohydrates required for healthy growth.</p>
+            
+            <p>But the true highlight of the week comes at the end. Every Sunday, the entire community gathers for the <strong>Sunday Feast</strong>.</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+                <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&q=80" alt="Children gathering for Sunday feast" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; margin: 0;" />
+                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80" alt="Smiling children with food" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; margin: 0;" />
+            </div>
+
+            <p>"The Sunday Feast is a celebration," says Anita, the head of the kitchen staff. "We make special sweets, rich diverse curries, and regional delicacies that these children rarely get to taste. To see their faces light up when they sit together to eat... that is my greatest reward."</p>
+
+            <p>Beyond ending immediate hunger, this initiative has drastically improved school attendance, increased focus during class hours, and significantly lowered the rates of preventable childhood illnesses in the region.</p>
+        `,
+        image: MEDIA.hero.nutrition // Placeholder image
     }
 ];
