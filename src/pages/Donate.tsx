@@ -7,11 +7,17 @@ import { Check, Lock, Heart, Globe, Zap, Leaf, Gift, MoveRight, ArrowUpRight, Lo
 import { MEDIA } from '@/data/media';
 import { toast } from 'sonner';
 
+// Proper asset imports for production builds
+import imgPt9 from '@/assets/pt9.jpg';
+import imgPt1 from '@/assets/pt1.jpeg';
+import imgP13 from '@/assets/p13.jpeg';
+import imgPt5 from '@/assets/pt5.jpg';
+
 const impactGallery = [
     {
         title: 'Studying',
         category: 'Education',
-        image: "src/assets/pt9.jpg",
+        image: imgPt9,
         stat: '500+',
         statLabel: 'Students Enrolled',
         desc: "Transforming rural education through digital classrooms, scholarship programs, and comprehensive mentorship."
@@ -396,25 +402,25 @@ const Donate = () => {
                             {
                                 title: 'Teaching',
                                 category: 'Education',
-                                image: 'src/assets/pt9.jpg',
+                                image: imgPt9,
                                 stat: '500+ Students'
                             },
                             {
                                 title: 'Nutrition',
                                 category: 'Food',
-                                image: 'src/assets/pt1.jpeg',
+                                image: imgPt1,
                                 stat: '100000+ Meals'
                             },
                             {
                                 title: 'Mobile Health',
                                 category: 'Healthcare',
-                                image: 'src/assets/p13.jpeg',
+                                image: imgP13,
                                 stat: '1k Patients'
                             },
                             {
                                 title: 'Covid Relief',
                                 category: 'Relief program',
-                                image: 'src/assets/pt5.jpg',
+                                image: imgPt5,
                                 stat: '5k Relief'
                             }
                         ].map((work, idx) => (

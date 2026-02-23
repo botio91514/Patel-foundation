@@ -10,6 +10,14 @@ import {
 import { MEDIA } from '@/data/media';
 import aboutBg from '@/assets/bg.png';
 
+// Team member image imports (proper imports so Vite bundles them for production)
+import imgJigneshPatel from '@/assets/img/jignesh-patel.png';
+import imgShreyaPatel from '@/assets/img/shreya-patel.png';
+import imgDeepalMacwan from '@/assets/img/deepal-macwan.png';
+import imgHiralMacwan from '@/assets/img/hiral-macwan.png';
+import imgSejalPanchal from '@/assets/img/Sejal-panchal.png';
+import imgParthPatel from '@/assets/img/parth-patel.png';
+
 // --- HELPERS ---
 
 const RevealTitle = ({ children, className = "" }: { children: any, className?: string }) => {
@@ -82,12 +90,12 @@ const VALUES = [
 const TEAM = [
     { name: "Sunny Patel", role: "Founder & Chairman", img: "" },
     { name: "Monika Patel", role: "Global CEO", img: "" },
-    { name: "Jignes Patel", role: "Head of Operations", img: "src/assets/img/jignesh-patel.png" },
-    { name: "Shreya Patel", role: "Chief Medical Officer", img: "src/assets/img/shreya-patel.png" },
-    { name: "Deepak Macwan", role: "CFO", img: "src/assets/img/deepal-macwan.png" },
-    { name: "Hiral Macwan", role: "Director of Education", img: "src/assets/img/hiral-macwan.png" },
-    { name: "Sejal Panchal", role: "Role / Title", img: "src/assets/img/sejal-panchal.png" },
-    { name: "Parth Patel", role: "Role / Title", img: "src/assets/img/parth-patel.png" },
+    { name: "Jignes Patel", role: "Head of Operations", img: imgJigneshPatel },
+    { name: "Shreya Patel", role: "Chief Medical Officer", img: imgShreyaPatel },
+    { name: "Deepak Macwan", role: "CFO", img: imgDeepalMacwan },
+    { name: "Hiral Macwan", role: "Director of Education", img: imgHiralMacwan },
+    { name: "Sejal Panchal", role: "Role / Title", img: imgSejalPanchal },
+    { name: "Parth Patel", role: "Role / Title", img: imgParthPatel },
 ];
 
 // --- MOUSE MOVEMENT LOGIC ---
