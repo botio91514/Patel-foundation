@@ -48,23 +48,29 @@ const Hero = () => {
           <span className="italic text-primary">Reach for Humanity.</span>
         </motion.h1>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-lg md:text-2xl text-slate-500 max-w-2xl mx-auto font-light leading-relaxed mb-12 px-6 min-h-[4rem] md:min-h-[3.5rem]"
+          className="text-lg md:text-2xl text-slate-500 max-w-2xl mx-auto font-light leading-relaxed mb-12 px-6 grid grid-cols-1 grid-rows-1 items-center"
         >
-          <TextType
-            text="From the rural heart of Kavitha, Gujarat, to a global platform for change. We provide education, daily nutrition, and crisis relief to children."
-            typingSpeed={30}
-            showCursor={true}
-            cursorCharacter="|"
-            loop={false}
-            className="inline"
-            startOnVisible={true}
-            as="span"
-          />
-        </motion.p>
+          {/* Reserved space to prevent layout jumps */}
+          <div className="invisible pointer-events-none select-none col-start-1 row-start-1" aria-hidden="true">
+            From the rural heart of Kavitha, Gujarat, to a global platform for change. We provide education, daily nutrition, and crisis relief to children.
+          </div>
+          <div className="col-start-1 row-start-1 self-start">
+            <TextType
+              text="From the rural heart of Kavitha, Gujarat, to a global platform for change. We provide education, daily nutrition, and crisis relief to children."
+              typingSpeed={30}
+              showCursor={true}
+              cursorCharacter="|"
+              loop={false}
+              className="inline"
+              startOnVisible={true}
+              as="span"
+            />
+          </div>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}

@@ -8,6 +8,7 @@ import {
     Users, Target, Lightbulb, Clock, CheckCircle2, ChevronDown, PlayCircle
 } from 'lucide-react';
 import { MEDIA } from '@/data/media';
+import aboutBg from '@/assets/bg.png';
 
 // --- HELPERS ---
 
@@ -171,7 +172,7 @@ const About = () => {
                         initial={{ scale: 1.1 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 10, ease: "easeOut" }}
-                        src={MEDIA.hero.kavitha}
+                        src={aboutBg}
                         className="w-full h-full object-cover"
                         alt="Children smiling"
                     />
